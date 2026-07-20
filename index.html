@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
   /inspect-housekeeping-app/
 
@@ -8,6 +8,11 @@
   <meta
     http-equiv="X-UA-Compatible"
     content="IE=Edge"
+  >
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
   >
 
   <meta
@@ -34,6 +39,13 @@
     name="apple-mobile-web-app-title"
     content="Inspect FSQR"
   >
+
+  <meta
+    name="theme-color"
+    content="#F4F7FB"
+  >
+
+  icons/Icon-192.png
 
   <link
     rel="icon"
@@ -74,8 +86,7 @@
       background-color: #f4f7fb;
       font-family: Arial, Helvetica, sans-serif;
 
-      opacity: 1;
-      transition: opacity 250ms ease;
+      transition: opacity 200ms ease;
     }
 
     #inspect-loading-screen.oculto {
@@ -123,7 +134,7 @@
   </div>
 
   <script>
-    function removerTelaCarregamento() {
+    function removerCarregamentoHtml() {
       const loadingScreen =
         document.getElementById(
           'inspect-loading-screen'
@@ -136,31 +147,16 @@
       loadingScreen.classList.add('oculto');
 
       window.setTimeout(function () {
-        if (loadingScreen.parentNode) {
-          loadingScreen.parentNode.removeChild(
-            loadingScreen
-          );
-        }
-      }, 300);
+        loadingScreen.remove();
+      }, 250);
     }
 
     window.addEventListener(
       'flutter-first-frame',
-      removerTelaCarregamento
-    );
-
-    /*
-      Caso o evento do Flutter não seja emitido,
-      esta camada HTML será removida automaticamente.
-      A tela de carregamento criada no main.dart
-      continuará visível enquanto os dados carregam.
-    */
-    window.setTimeout(
-      removerTelaCarregamento,
-      5000
+      removerCarregamentoHtml
     );
   </script>
 
-  <script src="flutter_bootstrap.js" defer></script>
+  flutter_bootstrap.jsscript>
 </body>
 </html>
